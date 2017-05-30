@@ -2,52 +2,51 @@ var Target = function(settings) {
 
     // Settings
     var ballElement = document.getElementsByClassName('ball');
-    console.log(ballElement)
+    // console.log(ballElement)
     var targetElement = document.getElementById('target');
     var ballHit = false;
     var score = settings.score;
+    var ballStatus = null;
 
 
-    // function getBallStatus(interactions){
-    //   if(interactions.space){
-    //     for (var i = 0; i < ballElement.length; i++) {
-    //       var ballRect = ballElement[i].getBoundingClientRect();
-    //       // console.log('ballRect', ballRect)
-    //       var targetRect = targetElement.getBoundingClientRect();
-    //       if(targetRect.left + targetRect.width > ballRect.left &&
-    //       targetRect.left < ballRect.right ){
-    //         console.log('space');
-    //
-    //         interactions.space = false;
-    //         var ballStatus = settings.ballStatus;
-    //         console.log(ballStatus);
-    //       }
-    //
-    //     }
-    //   }
-    //
-    // }
+    function getBallStatus(){
+      if(ballElement[0].style.backgroundImage == 'url("./images/ArrowUp.png")'){
+        ballStatus = "up";
+        console.log(ballStatus);
+      } else if(ballElement[0].style.backgroundImage == 'url("./images/ArrowLeft.png")'){
+        ballStatus = "left";
+        console.log(ballStatus);
+      } else if(ballElement[0].style.backgroundImage == 'url("./images/ArrowDown.png")'){
+        ballStatus = "down";
+        console.log(ballStatus);
+      } else if(ballElement[0].style.backgroundImage == 'url("./images/ArrowRight.png")'){
+        ballStatus = "right";
+        console.log(ballStatus);
+      }
+    }
+
+    function removeBall(ball){
+      document.body.removeChild(ball);
+    }
 
     function hit(interactions){
       if(interactions.space){
         if (ballHit == true){
           interactions.space = false;
         } else {
-          for (var i = 0; i < ballElement.length; i++) {
-            console.log('space');
-            var ballRect = ballElement[i].getBoundingClientRect();
-            console.log('ballRect', ballRect)
-            var targetRect = targetElement.getBoundingClientRect();
-            if(targetRect.left + targetRect.width > ballRect.left &&
-            targetRect.left < ballRect.right ){
-              ballHit = true;
-              score += 100;
-              settings.score = score;
-              console.log(score);
-            }
-            interactions.space = false;
-            ballHit = false;
+          var ballRect = ballElement[0].getBoundingClientRect();
+          var targetRect = targetElement.getBoundingClientRect();
+          if(targetRect.left + targetRect.width > ballRect.left &&
+          targetRect.left < ballRect.right ){
+            // getBallStatus();
+            ballHit = true;
+            score += 100;
+            removeBall(ballElement[0]);
+            settings.score = score;
+            // console.log(score);
           }
+          interactions.space = false;
+          ballHit = false;
         }
 
       }
@@ -78,7 +77,10 @@ var Target = function(settings) {
 
     this.render = function(interactions){
       hit(interactions);
-      // getBallStatus(interactions);
+      getBallStatus();
+      if(ballElement[0].style.left < -25 + "px"){
+        removeBall(ballElement[0]);
+      }
     }
 
     init();

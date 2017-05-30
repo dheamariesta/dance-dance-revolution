@@ -27,6 +27,22 @@ var Game = function() {
         var keyName = event.key;
 
         switch(keyName) {
+          case "ArrowUp":
+              interactions.up = false;
+              $('#score').text(settings.score);
+              break;
+          case "ArrowLeft":
+              interactions.left = false;
+              $('#score').text(settings.score);
+              break;
+          case "ArrowDown":
+              interactions.down = false;
+              $('#score').text(settings.score);
+              break;
+          case "ArrowRight":
+              interactions.right = false;
+              $('#score').text(settings.score);
+              break;
           case " ":
               interactions.space = false;
               $('#score').text(settings.score);
@@ -39,9 +55,20 @@ var Game = function() {
         var keyName = event.key;
 
         switch(keyName) {
+          case "ArrowUp":
+              interactions.up = true;
+              break;
+          case "ArrowLeft":
+              interactions.left = true;
+              break;
+          case "ArrowDown":
+              interactions.down = true;
+              break;
+          case "ArrowRight":
+              interactions.right = true;
+              break;
           case " ":
               interactions.space = true;
-
               break;
           default:
               break;
@@ -53,14 +80,6 @@ var Game = function() {
       if(frame % 120 ==0){
         var player = new Ball(settings);
         assets.push(player);
-      }
-    }
-
-    function removeBall(){
-      if (assets[1].style.left < -50 + "px"){
-        assets.splice(1,1);
-        var child = document.getElementsByClassName('ball')[0];
-        document.body.removeChild(child);
       }
     }
 

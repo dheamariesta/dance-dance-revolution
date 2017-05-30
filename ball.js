@@ -56,7 +56,7 @@ var Ball = function(settings) {
         ballElement.style.height = '100px';
         ballElement.style.width = '100px';
         var arrow = Math.floor(Math.random() * 4);
-        console.log(arrow);
+        // console.log(arrow);
         switch (arrow) {
           case 0:
                 ballElement.style.backgroundImage= "url('./images/ArrowUp.png')";
