@@ -8,7 +8,6 @@ var Target = function(settings) {
     var score = settings.score;
     var ballStatus = null;
 
-
     function getBallStatus(){
       if(ballElement[0].style.backgroundImage == 'url("./images/ArrowUp.png")'){
         ballStatus = "up";
@@ -29,10 +28,22 @@ var Target = function(settings) {
       document.body.removeChild(ball);
     }
 
-    function hit(interactions){
-      if(interactions.space){
+    function checkKeys(interactions){
+        if(interactions.up && ballStatus == "up"){
+          hit(interactions.up);
+        } else if (interactions.left && ballStatus == "left"){
+          hit(interactions.left);
+        } else if (interactions.down && ballStatus == "down"){
+          hit(interactions.down);
+        } else if(interactions.right && ballStatus == "right"){
+          hit(interactions.right);
+        }
+    }
+
+    function hit(keyDown){
+      if(keyDown){
         if (ballHit == true){
-          interactions.space = false;
+          keyDown = false;
         } else {
           var ballRect = ballElement[0].getBoundingClientRect();
           var targetRect = targetElement.getBoundingClientRect();
@@ -45,26 +56,13 @@ var Target = function(settings) {
             settings.score = score;
             // console.log(score);
           }
-          interactions.space = false;
+          keyDown = false;
           ballHit = false;
         }
 
       }
 
     }
-
-
-
-    // Listen to keyboard input
-    // function keyListener(interactions){ //to set what happen when keys are pressed
-    //
-    //   if(settings.walls){
-    //     wall();
-    //   }
-    // }
-
-
-
 
     function init(){
       targetElement = document.getElementById('target');
@@ -76,8 +74,9 @@ var Target = function(settings) {
     }
 
     this.render = function(interactions){
-      hit(interactions);
+      // hit(interactions);
       getBallStatus();
+      checkKeys(interactions);
       if(ballElement[0].style.left < -25 + "px"){
         removeBall(ballElement[0]);
       }

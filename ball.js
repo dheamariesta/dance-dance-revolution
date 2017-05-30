@@ -26,10 +26,6 @@ var Ball = function(settings) {
         ballElement.style.top = '0px';
       }
 
-      // if (x_left < 0){
-      //   ballElement.style.left = '0px';
-      // }
-
       if (x_right > w){
         ballElement.style.left = (w - parseInt(ballElement.style.width)) + 'px';
       }
