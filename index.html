@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Dance Dance Revolution</title>
+
+  <style>
+
+    .ball {
+      height: 100px;
+      width: 100px;
+      background-color: red;
+      position: absolute;
+      top:50px;
+      left:50px;
+      border-radius: 50%;
+      /*display: inline-block;*/
+    }
+    #target {
+      height: 100px;
+      width: 100px;
+      background-color: green;
+      position: absolute;
+      top:400px;
+      left:50px;
+      border-radius: 50%;
+      /*display: inline-block;*/
+    }
+    #score-board {
+      height: 150px;
+      width: 300px;
+      color: purple;
+      font-family: Helvetica, sans-serif;
+      font-size: 48px;
+      top: 50px;
+      right: 200px;
+      position: absolute;
+      /*display: inline;*/
+    }
+    #start{
+      height: 50px;
+      line-height: 0px;
+      width: 150px;
+      left: 400px;
+      top:50px;
+      position: absolute;
+      /*display: inline;*/
+    }
+
+  </style>
+
+</head>
+
+<body>
+  <button id = "start"><h1>START</h1></button>
+  <div id = "score-board">SCORE: <span id = "score">0</span></div>
+  <!-- <div class="ball"></div> -->
+  <div id="target"></div>
+
+
+
+  <script type="text/javascript" src="jquery.min.js"></script>
+  <script type="text/javascript" src="ball.js"></script>
+  <!-- <script type="text/javascript" src="ArrowUp.js"></script> -->
+  <script type="text/javascript" src="target.js"></script>
+  <script type="text/javascript" src="game.js"></script>
+</body>
+</html>

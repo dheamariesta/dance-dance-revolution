@@ -1,0 +1,78 @@
+var ArrowUp = function(settings) {
+
+    // Settings
+    var ballElement = null;
+    var target = document.getElementById('target');
+    var ballStatus = null;
+
+    var startButton = document.getElementById('start');
+    var start = false;
+
+    function wall() {
+
+      var x_right = parseInt(ballElement.style.left)  + parseInt(ballElement.style.width);
+      var x_left = parseInt(ballElement.style.left);
+      var y_top = parseInt(ballElement.style.top);
+      var y_bottom = parseInt(ballElement.style.top) + parseInt(ballElement.style.height);
+
+      var w = parseInt(window.innerWidth);
+      var h = parseInt(window.innerHeight);
+
+      if(y_bottom > h){
+        ballElement.style.top = (h-parseInt(ballElement.style.height)) + 'px';
+      }
+
+      if(y_top < 0){
+        ballElement.style.top = '0px';
+      }
+
+      // if (x_left < 0){
+      //   ballElement.style.left = '0px';
+      // }
+
+      if (x_right > w){
+        ballElement.style.left = (w - parseInt(ballElement.style.width)) + 'px';
+      }
+    }
+
+    function move(interactions){
+        ballElement.style.left = parseInt(ballElement.style.left)-5+"px";
+    }
+
+    // Listen to keyboard input
+    function keyListener(interactions){ //to set what happen when keys are pressed
+
+      if(settings.walls){
+        wall();
+      }
+    }
+
+
+    function create() {
+        // Create the object asset
+        ballElement = document.createElement('div');
+        ballElement.style.top = '400px';
+        ballElement.style.left = '1000px';
+        ballElement.style.height = '100px';
+        ballElement.style.width = '100px';
+        ballElement.style.backgroundImage = "url('./images/ArrowUp.png')";
+        settings.ballStatus = "up";
+
+
+        ballElement.style.position = 'absolute';
+        ballElement.style.borderRadius = '50px';
+        ballElement.className = "ball";
+
+        document.body.appendChild(ballElement);
+    }
+
+    function init(){
+      create();
+    }
+
+    this.render = function(interactions){
+      move(interactions);
+    }
+
+    init();
+}
