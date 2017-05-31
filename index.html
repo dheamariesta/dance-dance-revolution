@@ -3,66 +3,37 @@
 <head>
   <meta charset="UTF-8">
   <title>Dance Dance Revolution</title>
-
-  <style>
-
-    .ball {
-      height: 100px;
-      width: 100px;
-      background-color: red;
-      position: absolute;
-      top:50px;
-      left:50px;
-      border-radius: 50%;
-      /*display: inline-block;*/
-    }
-    #target {
-      height: 100px;
-      width: 100px;
-      background-color: green;
-      position: absolute;
-      top:400px;
-      left:50px;
-      border-radius: 50%;
-      /*display: inline-block;*/
-    }
-    #score-board {
-      height: 150px;
-      width: 300px;
-      color: purple;
-      font-family: Helvetica, sans-serif;
-      font-size: 48px;
-      top: 50px;
-      right: 200px;
-      position: absolute;
-      /*display: inline;*/
-    }
-    #start{
-      height: 50px;
-      line-height: 0px;
-      width: 150px;
-      left: 400px;
-      top:50px;
-      position: absolute;
-      /*display: inline;*/
-    }
-
-  </style>
+  <link href = "animate.css" rel = "stylesheet" type = "text/css" />
+  <link href = "style.css" rel = "stylesheet" type = "text/css" />
 
 </head>
 
 <body>
-  <button id = "start"><h1>START</h1></button>
-  <div id = "score-board">SCORE: <span id = "score">0</span></div>
+  <audio controls id = "audio">
+    <source src="./audio/Menu-Selection-Click.wav" type="audio/mp3">
+  </audio>
+  <audio controls autoplay id = "song">
+    <source src="./audio/happy-and-you-know-it.mp3" type="audio/mp3">
+  </audio>
+  <!-- <button id = "start"><h1>START</h1></button> -->
+  <div id = "score-board">Player 1 SCORE: <span id = "score">0</span></div>
+  <div id = "line-divider"></div>
+  <div id = "score-board-two">Player 2 SCORE: <span id = "score-two">0</span></div>
+  <div id = "comment"></div>
+  <div id = "comment-two"></div>
+
   <!-- <div class="ball"></div> -->
   <div id="target"></div>
+  <div id="target-two"></div>
 
 
 
   <script type="text/javascript" src="jquery.min.js"></script>
   <script type="text/javascript" src="ball.js"></script>
+  <script type="text/javascript" src="ballPlayerTwo.js"></script>
   <!-- <script type="text/javascript" src="ArrowUp.js"></script> -->
   <script type="text/javascript" src="target.js"></script>
+  <script type="text/javascript" src="targetTwo.js"></script>
   <script type="text/javascript" src="game.js"></script>
 </body>
 </html>

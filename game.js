@@ -1,6 +1,10 @@
 var Game = function() {
     var score = document.getElementById('score').innerText;
     score = parseInt(score);
+
+    var scoreTwo = document.getElementById('score-two').innerText;
+    scoreTwo = parseInt(scoreTwo);
+    var audio = document.getElementById('song');
     // Game settings
     var settings = {};                     // Containes all game settings
     settings.ballSpeed = 1;                // The speed of the ball
@@ -8,13 +12,16 @@ var Game = function() {
     settings.score = score;
     settings.frame = 0;
     settings.ballStatus = null;
+    settings.scoreTwo = scoreTwo;
 
     // World settings
     var assets = [];                      // All game objects
     var frame = 0;
     var target = new Target(settings);
+    var targetTwo = new TargetTwo(settings);
     assets[0] = target;                     // Frames since the start of the game
-
+    assets[1] = targetTwo;
+    console.log(assets);
 
 
     // Interactions
@@ -27,45 +34,77 @@ var Game = function() {
         var keyName = event.key;
 
         switch(keyName) {
-          case "ArrowUp":
+          case "w":
               interactions.up = false;
               $('#score').text(settings.score);
               break;
-          case "ArrowLeft":
+          case "a":
               interactions.left = false;
               $('#score').text(settings.score);
               break;
-          case "ArrowDown":
+          case "s":
               interactions.down = false;
               $('#score').text(settings.score);
               break;
-          case "ArrowRight":
+          case "d":
               interactions.right = false;
               $('#score').text(settings.score);
               break;
+          case "ArrowUp":
+              interactions.up2 = false;
+              $('#score-two').text(settings.scoreTwo);
+              break;
+          case "ArrowLeft":
+              interactions.left2 = false;
+              $('#score-two').text(settings.scoreTwo);
+              break;
+          case "ArrowDown":
+              interactions.down2 = false;
+              $('#score-two').text(settings.scoreTwo);
+              break;
+          case "ArrowRight":
+              interactions.right2 = false;
+              $('#score-two').text(settings.scoreTwo);
+              break;
           case " ":
-              interactions.space = false;
-              $('#score').text(settings.score);
+              // interactions.space = false;
+              // $('#score').text(settings.score);
               break;
           default:
               break;
         }
       });
+
+      audio.addEventListener("ended", function(){
+        alert('game over');
+      });
       document.addEventListener('keydown', function(event){
         var keyName = event.key;
 
         switch(keyName) {
-          case "ArrowUp":
+          case "w":
               interactions.up = true;
               break;
-          case "ArrowLeft":
+          case "a":
               interactions.left = true;
               break;
-          case "ArrowDown":
+          case "s":
               interactions.down = true;
               break;
-          case "ArrowRight":
+          case "d":
               interactions.right = true;
+              break;
+          case "ArrowUp":
+              interactions.up2 = true;
+              break;
+          case "ArrowLeft":
+              interactions.left2 = true;
+              break;
+          case "ArrowDown":
+              interactions.down2 = true;
+              break;
+          case "ArrowRight":
+              interactions.right2 = true;
               break;
           case " ":
               interactions.space = true;
@@ -77,9 +116,12 @@ var Game = function() {
     }
 
     function generateNewBall(){
-      if(frame % 120 ==0){
+      if(frame % 36 ==0){
         var player = new Ball(settings);
+        var playerTwo = new BallPlayerTwo(settings);
         assets.push(player);
+        // console.log(playerTwo)
+        assets.push(playerTwo);
       }
     }
 
@@ -96,6 +138,7 @@ var Game = function() {
       for(var i=0; i < assets.length; i++){
         assets[i].render(interactions);
       }
+
     }
 
     var self = this;

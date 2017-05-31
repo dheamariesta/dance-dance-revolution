@@ -1,8 +1,8 @@
-var Ball = function(settings) {
+var BallPlayerTwo = function(settings) {
 
     // Settings
     var ballElement = null;
-    var target = document.getElementById('target');
+    var target = document.getElementById('target-two');
     var ballStatus = null;
 
     var startButton = document.getElementById('start');
@@ -32,7 +32,7 @@ var Ball = function(settings) {
     }
 
     function move(interactions){
-        ballElement.style.left = parseInt(ballElement.style.left)-7+"px";
+        ballElement.style.left = parseInt(ballElement.style.left)+ 7+"px";
     }
 
     // Listen to keyboard input
@@ -47,8 +47,8 @@ var Ball = function(settings) {
     function create() {
         // Create the object asset
         ballElement = document.createElement('div');
-        ballElement.style.top = '500px';
-        ballElement.style.left = '1000px';
+        ballElement.style.top = '150px';
+        ballElement.style.left = '100px';
         ballElement.style.height = '100px';
         ballElement.style.width = '100px';
         var arrow = Math.floor(Math.random() * 4);
@@ -81,8 +81,8 @@ var Ball = function(settings) {
 
         ballElement.style.position = 'absolute';
         ballElement.style.borderRadius = '50px';
-        ballElement.className = "ball";
-
+        ballElement.className = "ball-two";
+        // console.log(ballElement)
         document.body.appendChild(ballElement);
     }
 

@@ -1,13 +1,12 @@
-var Target = function(settings) {
+var TargetTwo = function(settings) {
 
     // Settings
-    var ballElement = document.getElementsByClassName('ball');
+    var ballElement = document.getElementsByClassName('ball-two');
     // console.log(ballElement)
-    var targetElement = document.getElementById('target');
+    var targetElement = document.getElementById('target-two');
     var ballHit = false;
-    var score = settings.score;
+    var scoreTwo = settings.scoreTwo;
     var ballStatus = null;
-    var audio = document.getElementById("audio");
 
     function getBallStatus(){
       if(ballElement[0].style.backgroundImage == 'url("./images/ArrowUp.png")'){
@@ -30,14 +29,14 @@ var Target = function(settings) {
     }
 
     function checkKeys(interactions){
-        if(interactions.up && ballStatus == "up"){
-          hit(interactions.up);
-        } else if (interactions.left && ballStatus == "left"){
-          hit(interactions.left);
-        } else if (interactions.down && ballStatus == "down"){
-          hit(interactions.down);
-        } else if(interactions.right && ballStatus == "right"){
-          hit(interactions.right);
+        if(interactions.up2 && ballStatus == "up"){
+          hit(interactions.up2);
+        } else if (interactions.left2 && ballStatus == "left"){
+          hit(interactions.left2);
+        } else if (interactions.down2 && ballStatus == "down"){
+          hit(interactions.down2);
+        } else if(interactions.right2 && ballStatus == "right"){
+          hit(interactions.right2);
         }
     }
 
@@ -48,29 +47,29 @@ var Target = function(settings) {
         } else {
           var ballRect = ballElement[0].getBoundingClientRect();
           var targetRect = targetElement.getBoundingClientRect();
-          if(targetRect.left + targetRect.width > ballRect.left &&
-          targetRect.left < ballRect.left + ballRect.width ){
+          if(ballRect.left + ballRect.width > targetRect.left &&
+           ballRect.left < targetRect.left + targetRect.width ){
             if(Math.abs(targetRect.left - ballRect.left) <= 5 ||
             Math.abs(ballRect.right - targetRect.right <= 5)){
-              $('#comment').text("Excellent!");
-              score += 100;
+              $('#comment-two').text("Excellent!");
+              scoreTwo += 100;
             } else if(Math.abs(targetRect.left - ballRect.left) <= 20 ||
             Math.abs(ballRect.right - targetRect.right <= 20)){
-              $('#comment').text("Good!");
-              score += 50;
+              $('#comment-two').text("Good!");
+              scoreTwo += 50;
             } else if(Math.abs(targetRect.left - ballRect.left) <= 50 ||
             Math.abs(ballRect.right - targetRect.right <= 50)){
-              $('#comment').text("Bad!");
-              score += 25;
+              $('#comment-two').text("Bad!");
+              scoreTwo += 25;
             }  else {
-              $('#comment').text("");
-              score += 5;
+              $('#comment-two').text("");
+              scoreTwo += 5;
             }
             // getBallStatus();
             ballHit = true;
             // score += 100;
             removeBall(ballElement[0]);
-            settings.score = score;
+            settings.scoreTwo = scoreTwo;
             // console.log(score);
           }
           keyDown = false;
@@ -82,23 +81,27 @@ var Target = function(settings) {
     }
 
     function init(){
-      targetElement = document.getElementById('target');
+      targetElement = document.getElementById('target-two');
 
-      targetElement.style.top = '500px';
-      targetElement.style.left = '200px';
+      targetElement.style.top = '150px';
+      targetElement.style.left = '1000px';
       targetElement.style.height = '100px';
       targetElement.style.width = '100px';
     }
 
     this.render = function(interactions){
       // hit(interactions);
+
       getBallStatus();
       checkKeys(interactions);
-      if(ballElement[0].getBoundingClientRect().left + ballElement[0].getBoundingClientRect().width < targetElement.getBoundingClientRect().left){
-        $('#comment').text("miss");
-        audio.play();
+      if(parseInt(ballElement[0].getBoundingClientRect().left) >
+      parseInt(targetElement.getBoundingClientRect().left
+      + targetElement.getBoundingClientRect().width)){
+        $('#comment-two').text("miss");
+        
       }
-      if(parseInt(ballElement[0].style.left) < 5){
+      if(parseInt(ballElement[0].style.left) > 1100){
+        //console.log(parseInt(ballElement[0].style.left))
         removeBall(ballElement[0]);
         // $('#comment').text("miss");
       }

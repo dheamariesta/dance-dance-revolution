@@ -1,0 +1,85 @@
+body{
+  margin: 0;
+}
+.ball {
+  height: 100px;
+  width: 100px;
+  background-color: red;
+  position: absolute;
+  top:50px;
+  left:50px;
+  border-radius: 50%;
+  /*display: inline-block;*/
+}
+#target {
+  height: 100px;
+  width: 100px;
+  background-color: green;
+  position: absolute;
+  top:500px;
+  left:200px;
+  border-radius: 50%;
+  /*display: inline-block;*/
+}
+#target-two {
+  height: 100px;
+  width: 100px;
+  background-color: green;
+  position: absolute;
+  top:150px;
+  left:1000px;
+  border-radius: 50%;
+  /*display: inline-block;*/
+}
+#score-board {
+  height: 150px;
+  width: 300px;
+  color: purple;
+  font-family: Helvetica, sans-serif;
+  font-size: 30px;
+  top: 400px;
+  left: 150px;
+  position: absolute;
+  /*display: inline;*/
+}
+#line-divider{
+  height: 10px;
+  width: 100%;
+  background-color: red;
+  position:absolute;
+  top: 50%;
+}
+#score-board-two {
+  height: 150px;
+  width: 300px;
+  color: purple;
+  font-family: Helvetica, sans-serif;
+  font-size: 30px;
+  top: 50px;
+  right: 150px;
+  position: absolute;
+  /*display: inline;*/
+}
+#start{
+  height: 50px;
+  line-height: 0px;
+  width: 150px;
+  left: 400px;
+  top:50px;
+  position: absolute;
+  /*display: inline;*/
+}
+#comment{
+  position: absolute;
+  text-transform: uppercase;
+  top: 450px;
+  left:230px;
+  text-align: center;
+}
+#comment-two{
+  position: absolute;
+  text-transform: uppercase;
+  top: 100px;
+  right:250px;
+  text-align: center;
+}
