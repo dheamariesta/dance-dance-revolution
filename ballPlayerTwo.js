@@ -32,7 +32,7 @@ var BallPlayerTwo = function(settings) {
     }
 
     function move(interactions){
-        ballElement.style.left = parseInt(ballElement.style.left)+ 7+"px";
+        ballElement.style.left = parseInt(ballElement.style.left)+ 3+"px";
     }
 
     // Listen to keyboard input
@@ -82,7 +82,6 @@ var BallPlayerTwo = function(settings) {
         ballElement.style.position = 'absolute';
         ballElement.style.borderRadius = '50px';
         ballElement.className = "ball-two";
-        // console.log(ballElement)
         document.body.appendChild(ballElement);
     }
 

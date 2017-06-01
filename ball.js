@@ -32,7 +32,7 @@ var Ball = function(settings) {
     }
 
     function move(interactions){
-        ballElement.style.left = parseInt(ballElement.style.left)-7+"px";
+        ballElement.style.left = parseInt(ballElement.style.left)-3+"px";
     }
 
     // Listen to keyboard input
@@ -52,37 +52,28 @@ var Ball = function(settings) {
         ballElement.style.height = '100px';
         ballElement.style.width = '100px';
         var arrow = Math.floor(Math.random() * 4);
-        // console.log(arrow);
         switch (arrow) {
           case 0:
                 ballElement.style.backgroundImage= "url('./images/ArrowUp.png')";
                 settings.ballStatus = "up";
-                // console.log(settings.ballStatus);
                 break;
           case 1:
                 ballElement.style.backgroundImage = "url('./images/ArrowLeft.png')";
                 settings.ballStatus = "left";
-                // console.log(settings.ballStatus);
                 break;
           case 2:
                 ballElement.style.backgroundImage = "url('./images/ArrowDown.png')";
                 settings.ballStatus = "down";
-                // console.log(settings.ballStatus);
                 break;
           case 3:
                 ballElement.style.backgroundImage = "url('./images/ArrowRight.png')";
                 settings.ballStatus = "right";
-                // console.log(settings.ballStatus);
                 break;
           default:
-
         }
-
-
         ballElement.style.position = 'absolute';
         ballElement.style.borderRadius = '50px';
         ballElement.className = "ball";
-
         document.body.appendChild(ballElement);
     }
 

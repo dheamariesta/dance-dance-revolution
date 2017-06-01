@@ -1,39 +1,32 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Dance Dance Revolution</title>
-  <link href = "animate.css" rel = "stylesheet" type = "text/css" />
-  <link href = "style.css" rel = "stylesheet" type = "text/css" />
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Menu Page</title>
+    <link href="https://fonts.googleapis.com/css?family=Chelsea+Market" rel="stylesheet">
+    <link href = "menustyle.css" rel = "stylesheet" type = "text/css" />
+  </head>
+  <body>
+    <audio controls autoplay hidden="hidden" loop>
+      <source src = "./audio/Maple-Leaf-Rag.mp3" type = "audio/mp3" />
+    </audio>
 
-</head>
+    <audio controls hidden="hidden" id = "mousehover">
+      <source src = "./audio/click.wav" type = "audio/mp3" />
+    </audio>
 
-<body>
-  <audio controls id = "audio">
-    <source src="./audio/Menu-Selection-Click.wav" type="audio/mp3">
-  </audio>
-  <audio controls autoplay id = "song">
-    <source src="./audio/happy-and-you-know-it.mp3" type="audio/mp3">
-  </audio>
-  <!-- <button id = "start"><h1>START</h1></button> -->
-  <div id = "score-board">Player 1 SCORE: <span id = "score">0</span></div>
-  <div id = "line-divider"></div>
-  <div id = "score-board-two">Player 2 SCORE: <span id = "score-two">0</span></div>
-  <div id = "comment"></div>
-  <div id = "comment-two"></div>
-
-  <!-- <div class="ball"></div> -->
-  <div id="target"></div>
-  <div id="target-two"></div>
-
+    <audio controls hidden="hidden" id = "mouseclick">
+      <source src = "./audio/mouseclick.wav" type = "audio/mp3" />
+    </audio>
+    <div class = "container">
+      <h1>Dance Dance Revolution</h1>
+      <h4>Two Players</h4>
+      <a href = "game.html">Start</a><br /><br />
+      <a href="#" id = "how-to-play">How to play</a>
+    </div>
 
 
-  <script type="text/javascript" src="jquery.min.js"></script>
-  <script type="text/javascript" src="ball.js"></script>
-  <script type="text/javascript" src="ballPlayerTwo.js"></script>
-  <!-- <script type="text/javascript" src="ArrowUp.js"></script> -->
-  <script type="text/javascript" src="target.js"></script>
-  <script type="text/javascript" src="targetTwo.js"></script>
-  <script type="text/javascript" src="game.js"></script>
-</body>
+    <script type="text/javascript" src="jquery.min.js"></script>
+    <script src="script.js"></script>
+  </body>
 </html>

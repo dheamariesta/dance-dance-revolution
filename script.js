@@ -1,59 +1,55 @@
-var Game = function(){
+var instruction = document.getElementById('how-to-play');
 
-  //Game settings
-  var settings = {}; //this is  an object, contains all game settings
-    settings.ballSpeed = 5; //speed of ball
-    settings.walls = false; //ball cannot go outside the screen
-    settings.automatic = true; //ball will move by itself;
+instruction.addEventListener('click', function(){
+  var container = document.getElementsByClassName('container')[0];
+  // container.removeChild('instruction');
 
+  var title = document.getElementsByTagName('h1')[0];
+  title.innerHTML = "How to play";
 
-  //World settings
-  var assets = [];
+  var objectiveTitle = document.createElement('h3');
+  objectiveTitle.innerHTML = "Game Objective";
+  title.after(objectiveTitle);
 
-  //Game objects
-  var tiles = new Ball(settings);
+  var objective = document.createElement('p');
+  objective.innerHTML = "As the arrows scroll to the green target, press the corresponding keys on the keyboard.";
+  objectiveTitle.after(objective);
 
-  assets[0] = tiles;
-  var frame = 0; //no of frames since the start of the game
+  var playerOne = document.getElementsByTagName('h4')[0];
+  playerOne.innerHTML = "Player 1";
 
-  //Interactions
-  var interactions = {};
-  interactions.left = false;
+  var descriptionPlayerOne = document.createElement('p');
+  descriptionPlayerOne.innerHTML = "Player 1 use keys 'W', 'A', 'S' and 'D' as controller";
+  playerOne.after(descriptionPlayerOne);
 
-  function setupEvents(){
+  var playerTwo = document.createElement('h4');
+  playerTwo.innerHTML = "Player 2";
+  descriptionPlayerOne.after(playerTwo);
 
-    document.addEventListener('click', function(event){
-      interaction.left = true;
-    });
-  }
+  var descriptionPlayerTwo = document.createElement('p');
+  descriptionPlayerTwo.innerHTML = "Player 2 use arrow keys as controller";
+  playerTwo.after(descriptionPlayerTwo);
 
-  function init(){
-    setupEvents();
-  }
+  instruction.style.display = 'none';
 
-  function render(){
-    for (var i = 0; i < assets.length; i++){
-      assets[i].render(interactions);
-    }
-
-  }
-  window.requestAnimFrame = (function(){
-    return  window.requestAnimationFrame       ||
-            window.webkitRequestAnimationFrame ||
-            window.mozRequestAnimationFrame    ||
-            function( callback ){
-              window.setTimeout(callback, 1000 / 60);
-            };
-          })();
+  // var start = document.getElementsByTagName('a')[0];
+  //
+  // var br = document.getElementsByTagName('br')[1];
+  //
+  // var back = document.createElement('a');
+  // back.innerHTML = "Back to menu";
+  // back.href = "#";
+  // br.after(back);
 
 
-          (function animloop(){
-            requestAnimFrame(animloop);
-            render();
-          })();
+});
 
-          init();
+var audio = $('#mousehover')[0];
+$('a').mouseenter(function(){
+  audio.play();
+});
 
-}
-
-var g = new Game();
+var click = $('#mouseclick')[0];
+$('a').click(function(){
+  click.play();
+});

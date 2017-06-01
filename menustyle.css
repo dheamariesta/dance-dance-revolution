@@ -1,0 +1,29 @@
+h1, h4{
+  text-align: center;
+}
+h1{
+  font-size: 48px;
+}
+body{
+  font-family: "Chelsea Market", sans-serif;
+}
+.container{
+  width: 500px;
+  /*height: 200px;*/
+  margin: 0 auto;
+  text-align: center;
+  padding: 100px;
+  border: 10px solid black;
+  margin-top: 50px;
+}
+
+a{
+  font-size: 30px;
+  color: black;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+a:hover{
+  color: purple;
+}

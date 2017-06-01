@@ -1,10 +1,20 @@
 var Game = function() {
+    //Get score value for player one from html
     var score = document.getElementById('score').innerText;
     score = parseInt(score);
 
+    //Get score value for player two from html
     var scoreTwo = document.getElementById('score-two').innerText;
     scoreTwo = parseInt(scoreTwo);
+
+    //Get background song from html
     var audio = document.getElementById('song');
+    var audiolistener = false;            //check if background song has ended
+    audio.addEventListener("ended", function(){   //if song has ended
+      win();  //declare win
+      audiolistener = true; //set song has ended to true
+    });
+
     // Game settings
     var settings = {};                     // Containes all game settings
     settings.ballSpeed = 1;                // The speed of the ball
@@ -21,12 +31,10 @@ var Game = function() {
     var targetTwo = new TargetTwo(settings);
     assets[0] = target;                     // Frames since the start of the game
     assets[1] = targetTwo;
-    console.log(assets);
-
 
     // Interactions
     var interactions = {};
-    interactions.space = false;           // Speace key pressed
+    interactions.space = false;           // Space key pressed
 
     // Setup event listeners
     function setupEvents() {
@@ -75,9 +83,6 @@ var Game = function() {
         }
       });
 
-      audio.addEventListener("ended", function(){
-        alert('game over');
-      });
       document.addEventListener('keydown', function(event){
         var keyName = event.key;
 
@@ -113,15 +118,69 @@ var Game = function() {
               break;
         }
       });
+
+      var hover = $('#mousehover')[0]; //sound  effect when mouse hover a link
+      $('a').mouseenter(function(){
+        hover.play();
+      });
+
+      var click = $('#mouseclick')[0]; //sound  effect when mouse click a link
+      $('a').click(function(){
+        click.play();
+      });
     }
 
+    //To generate new balls
     function generateNewBall(){
-      if(frame % 36 ==0){
-        var player = new Ball(settings);
-        var playerTwo = new BallPlayerTwo(settings);
-        assets.push(player);
-        // console.log(playerTwo)
-        assets.push(playerTwo);
+      if (!audiolistener){ //if song has not ended
+        var random = Math.floor(Math.random() * 2); //two combination of interval to generate ball
+        if(random == 0){
+          random = 84; //one beat = 84 frame
+        } else if(random == 1){
+          random = 42; //half beat
+        }
+        if(frame % random ==0){ //generate new ball for both player one and player two
+          var player = new Ball(settings);
+          var playerTwo = new BallPlayerTwo(settings);
+          assets.push(player);
+          assets.push(playerTwo);
+        }
+      }
+    }
+
+    function win(){
+      //get score for player one
+      var score = document.getElementById('score').innerText;
+      score = parseInt(score);
+
+      //get score for player two
+      var scoreTwo = document.getElementById('score-two').innerText;
+      scoreTwo = parseInt(scoreTwo);
+
+      //set the gameover announcement to display:block to make it visible
+      var gameover = document.getElementById('gameover');
+      gameover.style.display = 'block';
+
+      //play the sound effect
+      var applause = document.getElementById('applause');
+      applause.play();
+      var cheer = document.getElementById('cheer');
+      cheer.play();
+
+      //get the announcement
+      var playeronewins = document.getElementById('playeronewins');
+      var playertwowins = document.getElementById('playertwowins');
+      var draw = document.getElementById('draw');
+      //announce accordingly
+      if (score > scoreTwo){
+        playertwowins.style.display = 'none';
+        draw.style.display = 'none';
+      } else if(scoreTwo > score){
+        playeronewins.style.display = 'none';
+        draw.style.display = 'none';
+      } else {
+        playertwowins.style.display = 'none';
+        playeronewins.style.display = 'none';
       }
     }
 
@@ -133,11 +192,22 @@ var Game = function() {
     // The render function. It will be called 60/sec
     this.render = function(){
       generateNewBall();
-      // removeBall();
-      frame++;
-      for(var i=0; i < assets.length; i++){
-        assets[i].render(interactions);
+
+      if(audiolistener == false){ //if song has not ended
+        for(var i=0; i < assets.length; i++){ //keep rendering
+            assets[i].render(interactions);
+        }
+        frame++;
+      } else { //else stop rendering and delete all balls from screen
+        var balls = document.getElementsByClassName('ball');
+        var ballTwos = document.getElementsByClassName('ball-two');
+        for(var i = 0; i< balls.length; i++){
+          document.body.removeChild(balls[i]);
+          document.body.removeChild(ballTwos[i]);
+        }
+        frame = 0;
       }
+
 
     }
 
@@ -159,8 +229,6 @@ var Game = function() {
             })();
 
             init();
-
-
 }
 
 var g = new Game();
