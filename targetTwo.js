@@ -68,7 +68,10 @@ var TargetTwo = function(settings) {
             ballHit = true;
             removeBall(ballElement[0]);
             settings.scoreTwo = scoreTwo;
+            var buttonhit = document.getElementById('hitTwo');
+            buttonhit.play();
           }
+
           keyDown = false;
           ballHit = false;
         }

@@ -48,7 +48,7 @@ var Ball = function(settings) {
         // Create the object asset
         ballElement = document.createElement('div');
         ballElement.style.top = '500px';
-        ballElement.style.left = '1000px';
+        ballElement.style.left = '1100px';
         ballElement.style.height = '100px';
         ballElement.style.width = '100px';
         var arrow = Math.floor(Math.random() * 4);
