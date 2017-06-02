@@ -24,6 +24,10 @@ a{
   margin-bottom: 20px;
 }
 
+#back{
+  display: none;
+}
+
 a:hover{
   color: purple;
 }

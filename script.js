@@ -1,4 +1,5 @@
 var instruction = document.getElementById('how-to-play');
+var back = document.getElementById('back');
 
 instruction.addEventListener('click', function(){
   var container = document.getElementsByClassName('container')[0];
@@ -31,16 +32,38 @@ instruction.addEventListener('click', function(){
   playerTwo.after(descriptionPlayerTwo);
 
   instruction.style.display = 'none';
+  back.style.display = 'block';
 
-  // var start = document.getElementsByTagName('a')[0];
-  //
-  // var br = document.getElementsByTagName('br')[1];
-  //
-  // var back = document.createElement('a');
-  // back.innerHTML = "Back to menu";
-  // back.href = "#";
-  // br.after(back);
+});
 
+var back = document.getElementById('back');
+back.addEventListener('click', function(){
+  var container = document.getElementsByClassName('container')[0];
+  // container.removeChild('instruction');
+
+  var title = document.getElementsByTagName('h1')[0];
+  title.innerHTML = "Dance Dance Revolution";
+
+  var objectiveTitle = document.getElementsByTagName('h3')[0];
+  container.removeChild(objectiveTitle);
+
+
+
+  var playerOne = document.getElementsByTagName('h4')[0];
+  playerOne.innerHTML = "Two Players";
+
+  var playerTwo = document.getElementsByTagName('h4')[1];
+  container.removeChild(playerTwo);
+
+  var paragraph = document.getElementsByTagName('p');
+  console.log(paragraph.length);
+  for(var i = 2; i >= 0; i--){
+    container.removeChild(paragraph[i]);
+    console.log(i);
+  }
+
+  instruction.style.display = 'block';
+  back.style.display = 'none';
 
 });
 
