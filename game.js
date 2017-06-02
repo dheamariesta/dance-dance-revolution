@@ -135,9 +135,9 @@ var Game = function() {
       if (!audiolistener){ //if song has not ended
         var random = Math.floor(Math.random() * 2); //two combination of interval to generate ball
         if(random == 0){
-          random = 84; //one beat = 84 frame
+          random = 84; //two beats
         } else if(random == 1){
-          random = 42; //half beat
+          random = 42; //one beat
         }
         if(frame % random ==0){ //generate new ball for both player one and player two
           var player = new Ball(settings);
