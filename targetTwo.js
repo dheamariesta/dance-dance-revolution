@@ -93,6 +93,8 @@ var TargetTwo = function(settings) {
       parseInt(targetElement.getBoundingClientRect().left
       + targetElement.getBoundingClientRect().width)){
         $('#comment-two').text("miss");
+        var miss = document.getElementById('miss');
+        miss.play();
       }
       if(parseInt(ballElement[0].style.left) > 1100){
         removeBall(ballElement[0]);

@@ -38,8 +38,8 @@ var Target = function(settings) {
 
     function hit(keyDown){
       if(keyDown){
-        if (ballHit == true){
-          keyDown = false;
+        if (ballHit == true){ //if ball is already hit
+          keyDown = false; //dont keep adding score, set keydown to false
         } else {
           var ballRect = ballElement[0].getBoundingClientRect();
           var targetRect = targetElement.getBoundingClientRect();
@@ -86,6 +86,8 @@ var Target = function(settings) {
       checkKeys(interactions);
       if(ballElement[0].getBoundingClientRect().left + ballElement[0].getBoundingClientRect().width < targetElement.getBoundingClientRect().left){
         $('#comment').text("miss");
+        var miss = document.getElementById('miss');
+        miss.play();
       }
       if(parseInt(ballElement[0].style.left) < 5){
         removeBall(ballElement[0]);
