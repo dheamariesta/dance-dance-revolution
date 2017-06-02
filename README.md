@@ -11,3 +11,10 @@ Arrows are spawned according to the beat of the song
 Player 1 use keys 'W', 'A', 'S' and 'D' as controller
 
 Player 2 use arrow keys as controller
+
+
+
+
+Game link:
+
+https://dheamariesta.github.io/DDR-Game-Project1/
