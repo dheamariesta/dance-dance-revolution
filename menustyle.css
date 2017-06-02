@@ -23,7 +23,9 @@ a{
   margin-top: 20px;
   margin-bottom: 20px;
 }
-
+#how-to-play{
+  display: block;
+}
 #back{
   display: none;
 }
