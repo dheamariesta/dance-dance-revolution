@@ -17,4 +17,4 @@ Player 2 use arrow keys as controller
 
 Game link:
 
-https://dheamariesta.github.io/DDR-Game-Project1/
+https://dheamariesta.github.io/dance-dance-revolution/
