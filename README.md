@@ -1,4 +1,4 @@
-# DDR-Game-Project1
+# Dance Dance Revolution -- SG WDI 10 Project 1
 
 How to play
 
